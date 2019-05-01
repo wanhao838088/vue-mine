@@ -1,5 +1,8 @@
 ### vue版扫雷
 
+  ![静态图1](https://github.com/wanhao838088/vue-mine/blob/master/imgs/view.png)
+ 
+  ![动态图1](https://github.com/wanhao838088/vue-mine/blob/master/imgs/test.gif)
 
 ## Build Setup
 
