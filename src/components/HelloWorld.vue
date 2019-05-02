@@ -39,7 +39,7 @@
         mRow:16, //行数
         mColumn:32, //列数
         mInterval:null,
-        mineCount:99, //雷的数量
+        mineCount:10, //雷的数量
 
         mines:null,//雷
         flags:null,//标记的旗子
@@ -85,13 +85,32 @@
         let flags = this.flags;
         for (let i = 0; i < flags.length ; i++) {
           for (let j = 0; j < flags[i].length; j++) {
-            if (flags[i][j]){
+            //如果这个格子已经打开了  需要忽略不计
+            if (flags[i][j] && !this.open[i][j]){
               selectCount++;
             }
           }
         }
         let result = this.mineCount - selectCount;
-        if (result<10) {
+        //是否完成游戏
+        let flag =  true;
+        if(result===0){
+          //判断是否完成游戏
+          for (let i = 0; i < flags.length ; i++) {
+            for (let j = 0; j < flags[i].length; j++) {
+              if (flags[i][j] && !this.mines[i][j]){
+                flag = false;
+                break;
+              }
+            }
+          }
+          if (flag){
+            alert("恭喜你，完成游戏!");
+          }
+        }
+        if (result<0) {
+          result = `${result}`;
+        } else if (result<10) {
           result = `00${result}`;
         }else if(result<100){
           result = `0${result}`;
